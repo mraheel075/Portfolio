@@ -54,7 +54,7 @@ $(window).on("load",function(){
         bufferPx: 0,
         maxPage: 6,
         loading: {
-            finishedMsg: "No more works",
+            finishedMsg: "No more",
             msgText: '',
             speed: 'slow',
             selector: '.load-more',
