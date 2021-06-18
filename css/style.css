@@ -421,6 +421,10 @@ main.content.push {
   height: 13px;
   width: 13px;
 }
+
+.rating {
+  color: #FF5959;
+}
 .hero .cta p {
   font-size: 16px;
   line-height: 1.8;
@@ -467,7 +471,7 @@ section.padding-60 {
 
 .skill-item h4 {
   font-size: 14px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .fact-item h2 {
