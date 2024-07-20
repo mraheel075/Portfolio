@@ -1661,22 +1661,23 @@
 	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="emailjs-config.js"></script>
     <script type="text/javascript">
-        // Initialize EmailJS with your User ID from env.js
-        (function(){
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS with the User ID
             emailjs.init(window.EMAILJS_USER_ID);
-        })();
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Send the form data using EmailJS
-            emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, this)
-                .then(function() {
-                    alert('Message sent successfully!');
-					document.getElementById('contact-form').reset();
-                }, function(error) {
-                    alert('Failed to send message. Please try again later.');
-                });
+            // Attach event listener after initialization
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Send the form data using EmailJS
+                emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, this)
+                    .then(function() {
+                        alert('Message sent successfully!');
+                        document.getElementById('contact-form').reset(); // Clear the form fields
+                    }, function(error) {
+                        alert('Failed to send message. Please try again later.');
+                    });
+            });
         });
     </script>
 </body>
