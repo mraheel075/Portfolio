@@ -142,16 +142,19 @@
 								<p class="mb-0">Email: <span class="text-dark">mraheel075@gmail.com</span></p>
 							</div>
 						</div>
-					    <div>
-						<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's CV - Karachi.pdf" target="_blank"
-							class="btn btn-default mr-3" download><i class="icon-cloud-download"></i>Download CV</a>
-						<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's Resume - Karachi.pdf" target="_blank"
-							class="btn btn-default mr-3" download><i class="icon-cloud-download"></i>Download Resume</a>
+						<div>
+							<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's CV - Karachi.pdf"
+								target="_blank" class="btn btn-default mr-3" download><i
+									class="icon-cloud-download"></i>Download CV</a>
+							<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's Resume - Karachi.pdf"
+								target="_blank" class="btn btn-default mr-3" download><i
+									class="icon-cloud-download"></i>Download Resume</a>
 						</div>
 						<div>
-					    <br>
-						<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's Cover Letter - Karachi.pdf" target="_blank"
-							class="btn btn-default mr-3" download><i class="icon-cloud-download"></i>Download Cover Letter</a>
+							<br>
+							<a href="docs/CVResume/Muhammad Raheel - Senior Test Engineer's Cover Letter - Karachi.pdf"
+								target="_blank" class="btn btn-default mr-3" download><i
+									class="icon-cloud-download"></i>Download Cover Letter</a>
 						</div>
 						<!-- <a href="#" class="btn btn-alt mt-2 mt-md-0 mt-xs-2"><i class="icon-envelope"></i>Hire me</a> -->
 					</div>
@@ -601,11 +604,11 @@
 						<div class="body">
 
 							<h4 class="mt-0">Senior Test Engineer</h4>
-							<p>10Pearls was founded in 2004 by brothers Imran and Zeeshan Aftab. 
-								What began as a two-person operation is now a global business with offices in 
-								the United States, Costa Rica, Colombia, United Kingdom, 
+							<p>10Pearls was founded in 2004 by brothers Imran and Zeeshan Aftab.
+								What began as a two-person operation is now a global business with offices in
+								the United States, Costa Rica, Colombia, United Kingdom,
 								Pakistan and Peru.</p><br>
-							<p>10Pearls is an award winning digital development company, helping business with 
+							<p>10Pearls is an award winning digital development company, helping business with
 								product design, development and technology acceleration.</p><br>
 							<ul class="list margin-b-30">
 								<li>Manage, support and coordinate business and QA aspects of software
@@ -1589,8 +1592,8 @@
 								<div class="column col-md-6">
 									<!-- Name input -->
 									<div class="form-group">
-										<input type="text" class="form-control" name="name"
-											placeholder="Your name" required="required" data-error="Name is required.">
+										<input type="text" class="form-control" name="name" placeholder="Your name"
+											required="required" data-error="Name is required.">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -1608,8 +1611,8 @@
 								<div class="column col-md-12">
 									<!-- Email input -->
 									<div class="form-group">
-										<input type="text" class="form-control" name="subject"
-											placeholder="Subject" required="required" data-error="Subject is required.">
+										<input type="text" class="form-control" name="subject" placeholder="Subject"
+											required="required" data-error="Subject is required.">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -1617,9 +1620,8 @@
 								<div class="column col-md-12">
 									<!-- Message textarea -->
 									<div class="form-group">
-										<textarea name="message" class="form-control" rows="5"
-											placeholder="Message" required="required"
-											data-error="Message is required."></textarea>
+										<textarea name="message" class="form-control" rows="5" placeholder="Message"
+											required="required" data-error="Message is required."></textarea>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -1658,28 +1660,25 @@
 	<script src="js/contact.js"></script>
 	<script src="js/validator.js"></script>
 	<script src="js/custom.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script src="emailjs-config.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS with the User ID
-            emailjs.init(window.EMAILJS_USER_ID);
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+	<script type="text/javascript">
+		// Initialize EmailJS
+		emailjs.init('4TWKi8mJwoFd-hFab'); // Replace with your EmailJS user ID
 
-            // Attach event listener after initialization
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                // Send the form data using EmailJS
-                emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, this)
-                    .then(function() {
-                        alert('Message sent successfully!');
-                        document.getElementById('contact-form').reset(); // Clear the form fields
-                    }, function(error) {
-                        alert('Failed to send message. Please try again later.');
-                    });
-            });
-        });
-    </script>
+		document.getElementById('contact-form').addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			emailjs.sendForm('service_djtwy2e', 'template_hbbxc4i', this)
+				.then(function (response) {
+					console.log('Success:', response);
+					alert('Your message has been sent successfully!');
+					document.getElementById('contact-form').reset();
+				}, function (error) {
+					console.error('Error:', error);
+					alert('Failed to send your message. Please try again later.');
+				});
+		});
+	</script>
 </body>
 
 <!-- Mirrored from pxltheme.com/html/bako/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Dec 2020 10:52:40 GMT -->
