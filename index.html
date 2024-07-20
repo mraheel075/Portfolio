@@ -1581,8 +1581,7 @@
 
 					<div class="col-md-8">
 						<!-- Contact Form -->
-						<form id="contact-form" class="contact-form" method="post"
-							action="https://pxltheme.com/html/bako/form/contact.php">
+						<form id="contact-form" class="contact-form">
 
 							<div class="messages"></div>
 
@@ -1590,7 +1589,7 @@
 								<div class="column col-md-6">
 									<!-- Name input -->
 									<div class="form-group">
-										<input type="text" class="form-control" name="InputName" id="InputName"
+										<input type="text" class="form-control" name="name"
 											placeholder="Your name" required="required" data-error="Name is required.">
 										<div class="help-block with-errors"></div>
 									</div>
@@ -1599,7 +1598,7 @@
 								<div class="column col-md-6">
 									<!-- Email input -->
 									<div class="form-group">
-										<input type="email" class="form-control" id="InputEmail" name="InputEmail"
+										<input type="email" class="form-control" name="email"
 											placeholder="Email address" required="required"
 											data-error="Email is required.">
 										<div class="help-block with-errors"></div>
@@ -1609,7 +1608,7 @@
 								<div class="column col-md-12">
 									<!-- Email input -->
 									<div class="form-group">
-										<input type="text" class="form-control" id="InputSubject" name="InputSubject"
+										<input type="text" class="form-control" name="subject"
 											placeholder="Subject" required="required" data-error="Subject is required.">
 										<div class="help-block with-errors"></div>
 									</div>
@@ -1618,7 +1617,7 @@
 								<div class="column col-md-12">
 									<!-- Message textarea -->
 									<div class="form-group">
-										<textarea name="InputMessage" id="InputMessage" class="form-control" rows="5"
+										<textarea name="message" class="form-control" rows="5"
 											placeholder="Message" required="required"
 											data-error="Message is required."></textarea>
 										<div class="help-block with-errors"></div>
@@ -1626,7 +1625,7 @@
 								</div>
 							</div>
 
-							<button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default"><i
+							<button type="submit" name="submit" value="Send Message" class="btn btn-default"><i
 									class="icon-paper-plane"></i>Send Message</button><!-- Send Button -->
 
 						</form>
@@ -1659,6 +1658,32 @@
 	<script src="js/contact.js"></script>
 	<script src="js/validator.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    // Fetch your EmailJS Service ID and Template ID from a secure server endpoint
+    fetch('/.netlify/functions/getEmailJSToken')
+        .then(response => response.json())
+        .then(data => {
+            // Initialize EmailJS with the fetched Service ID and Template ID
+            emailjs.init(data.EMAILJS_USER_ID);
+
+            // Attach event listener after initialization
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Send the form data using EmailJS
+                emailjs.sendForm(data.EMAIL_SERVICE_ID, data.EMAILJS_TEMPLATE_ID, this)
+                    .then(function() {
+                        alert('Message sent successfully!');
+                        document.getElementById('contact-form').reset(); // Clear the form fields
+                    }, function(error) {
+                        alert('Failed to send message. Please try again later.');
+                    });
+            });
+        })
+        .catch(error => console.error('Failed to fetch EmailJS IDs:', error));
+		//alert('Something went wrong, Message not sent ....');
+</script>
 
 </body>
 
